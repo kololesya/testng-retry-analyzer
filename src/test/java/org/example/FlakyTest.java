@@ -11,7 +11,7 @@ public class FlakyTest extends BaseTest {
     private static final AtomicInteger counter = new AtomicInteger(0); // thread-safe retry counter
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void flaky() {
+    public void verifyPassOnSecondAttempt() {
         int attempt = counter.incrementAndGet();
         logger.info("FlakyTest attempt {}", attempt);
         Assert.assertTrue(attempt >= 2, "Intentional failure to demo retry");

@@ -10,7 +10,7 @@ public class SlowTest extends BaseTest {
     private static final long SLEEP_DURATION_MILLIS = 500L;
 
     @Test(retryAnalyzer = RetryAnalyzer.class, timeOut = TIMEOUT_MILLIS)
-    public void slow() throws InterruptedException {
+    public void verifyExecutionWithinTimeout() throws InterruptedException {
         logger.info("SlowTest – sleeping {} ms", SLEEP_DURATION_MILLIS);
         Thread.sleep(SLEEP_DURATION_MILLIS);
         Assert.assertTrue(true);

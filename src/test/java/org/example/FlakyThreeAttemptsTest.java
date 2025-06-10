@@ -11,7 +11,7 @@ public class FlakyThreeAttemptsTest extends BaseTest {
     private static final AtomicInteger counter = new AtomicInteger(0); // thread-safe retry counter
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void flakyThree() {
+    public void verifyPassOnThirdAttempt() {
         int attempt = counter.incrementAndGet();
         logger.info("FlakyThreeAttemptsTest attempt {}", attempt);
         Assert.assertTrue(attempt >= 3,

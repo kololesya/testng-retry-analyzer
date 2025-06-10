@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class ImmediateSuccessTest extends BaseTest {
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void success() {
+    public void verifyImmediateSuccess() {
         logger.info("ImmediateSuccessTest – always passes");
         Assert.assertTrue(true);
     }
