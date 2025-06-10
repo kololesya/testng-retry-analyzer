@@ -2,20 +2,19 @@ package org.example;
 
 import org.example.retry.RetryAnalyzer;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class FlakyThreeAttemptsTest {
+public class FlakyThreeAttemptsTest extends BaseTest {
 
-    private static final AtomicInteger counter = new AtomicInteger(0);
+    private static final AtomicInteger counter = new AtomicInteger(0); // thread-safe retry counter
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void flakyThree() {
         int attempt = counter.incrementAndGet();
-        Reporter.log("FlakyThreeAttemptsTest attempt " + attempt, true);
+        logger.info("FlakyThreeAttemptsTest attempt {}", attempt);
         Assert.assertTrue(attempt >= 3,
-                "Failing until 3rd attempt (current: " + attempt + ")");
+                String.format("Failing until 3rd attempt (current: %d)", attempt));
     }
 }
